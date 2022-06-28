@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+  
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.rtl.min.css" integrity="sha384-dc2NSrAXbAkjrdm9IYrX10fQq9SDG6Vjz7nQVKdKcJl3pC+k37e7qJR5MVSCS+wR" crossorigin="anonymous">
+
+    <title>Calculadora</title>
+  </head>
+  <body>
+    <br>
+    <div class="container" style="font-size: 20px;">
+        <div class="border border-success p-4 mb-4">
+    <h1 class="text-center">Minha Calculadora</h1>
+    <br>
+    <form method="post">
+        <div class="row">
+            <label class="btn-next-morte next-morte" id="nome" disabled="disable" tabindex="-1">Nome:</label>
+            <div class="col-sm-6">
+              <input type="nome" class="form-control form-control-lg" id="colFormLabelLg" 
+              placeholder="Insira seu Nome" required >
+            </div>
+          </div>
+    </form>
+    
+      <br>
+
+        Primeiro Número<br />
+        <input id="n1" type="number" /><br />
+        Segundo Número<br />
+        <input id="n2" type="number"  /><br /><br />
+        <button onclick="somar()">Somar</button>
+        <button onclick="subtrair()">Subtrair</button>
+        <button onclick="multiplicar()">Multiplicar</button>
+        <button onclick="dividir()">Dividir</button> 
+      <br /><br />
+      O Resultado é: <span id="resultado"></span>
+      <br /><br />
+    
+        <div class="row">
+    <div class="col-1"></div>
+    <div class="col-2">
+        <div class="mx-auto" style="width: 200px;">
+            <input onclick="reset()"id="resetar" class="btn btn-primary"
+             type="reset"
+             value="Reset">
+          </div>
+        </div>
+        </div>
+</div>
+</div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
+
+    <script>
+        var n1 = document.querySelector('#n1')
+        var n2 = document.querySelector('#n2')
+        var Resultado = document.querySelector('span')
+
+          function somar() {
+            resultado.innerHTML = parseFloat(n1.value)  + parseFloat(n2.value);
+
+        }
+
+        function subtrair() {
+            resultado.innerHTML = parseFloat(n1.value)  - parseFloat(n2.value);
+           
+        }
+
+        function dividir() {
+            resultado.innerHTML = parseFloat(n1.value)   / parseFloat(n2.value);
+           
+        }
+
+        function multiplicar() {
+            resultado.innerHTML = parseFloat(n1.value)   * parseFloat(n2.value);
+           
+        }
+
+        function reset() {
+            
+            resultado.innerHTML = '';
+             n1.value = 0;
+             n2.value = 0;
+
+           
+        }
+
+
+        function  fazPost(url, body) {
+          console.log("Body", body)
+          let request = new XMLHttpRequest();
+          request.open("POST", url, true);
+          request.setRequestHeader("Content-ype", "application/json");
+          request.send(JSON.stringify(body));
+
+          request.onload = function() {
+            console.log(this.responseText)
+            
+          }
+
+          return request.responseText;
+        }
+
+        
+
+    </script>
+
+  </body>
+</html>

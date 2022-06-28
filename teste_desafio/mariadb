@@ -1,0 +1,14 @@
+sudo apt update
+sudo apt install mariadb-server
+sudo mysql_secure_installation
+Ruby@2022
+
+sudo mariadb ou sudo mysql -uroot -Ruby@2022
+GRANT ALL ON *.* TO 'admin'@'localhost' IDENTIFIED BY 'Ruby@2022' WITH GRANT OPTION;
+GRANT ALL ON *.* TO 'suporte'@'%' IDENTIFIED BY 'Ruby@2022' WITH GRANT OPTION;
+FLUSH PRIVILEGES;
+sudo service mysql restart
+sudo nano /etc/mysql/mariadb.conf.d/50-server.cnf
+para liberar acesso de outros computadores, mude o bind-address
+para 0.0.0.0
+skip-name-resolve (conflitos dns /request de ip)
